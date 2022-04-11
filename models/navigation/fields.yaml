@@ -1,0 +1,140 @@
+fields:
+    title:
+        label: Title
+        span: full
+        type: text
+tabs:
+    fields:
+        navigation:
+            label: Menu
+            prompt: 'Add menu item'
+            style: accordion
+            span: full
+            type: repeater
+            tab: Menu
+            form:
+                fields:
+                    title:
+                        label: Title
+                        span: auto
+                        type: text
+                    type:
+                        label: Type
+                        options:
+                            'CMS Page': 'CMS Page'
+                            'External Link': 'External Link'
+                        showSearch: true
+                        span: auto
+                        type: dropdown
+                    external_link:
+                        label: 'External Link'
+                        span: full
+                        trigger:
+                            action: show
+                            field: type
+                            condition: 'value[External Link]'
+                        type: text
+                    cmspage:
+                        label: Page
+                        showSearch: true
+                        span: full
+                        trigger:
+                            action: show
+                            field: type
+                            condition: 'value[CMS Page]'
+                        emptyOption: 'choose a page'
+                        type: dropdown
+                    submenu:
+                        label: 'Add Submenu'
+                        prompt: 'Add submenu item'
+                        style: accordion
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                title:
+                                    label: Title
+                                    span: auto
+                                    type: text
+                                type:
+                                    label: Type
+                                    options:
+                                        'CMS Page': 'CMS Page'
+                                        'External Link': 'External Link'
+                                    showSearch: true
+                                    span: auto
+                                    type: dropdown
+                                external_link:
+                                    label: 'External Link'
+                                    span: full
+                                    type: text
+                                    trigger:
+                                        action: show
+                                        field: type
+                                        condition: 'value[External Link]'
+                                cmspage:
+                                    label: Page
+                                    showSearch: true
+                                    span: full
+                                    type: dropdown
+                                    trigger:
+                                        action: show
+                                        field: type
+                                        condition: 'value[CMS Page]'
+        logo:
+            label: 'Logo in nav (Navbrand)'
+            span: auto
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            fileTypes: 'jpg,png,svg'
+            type: fileupload
+            tab: Customisation
+        expand:
+            label: 'Navbar Expand'
+            options:
+                navbar-expand-sm: navbar-expand-sm
+                navbar-expand-md: navbar-expand-md
+                navbar-expand-lg: navbar-expand-lg
+                navbar-expand-xl: navbar-expand-xl
+            emptyOption: navbar-expand-md
+            showSearch: 0
+            span: auto
+            default: navbar-expand-md
+            type: dropdown
+            commentAbove: 'Choose at what size the menu becomes a hamburger'
+            tab: Customisation
+        navbarcolor:
+            label: 'Navbar color'
+            options:
+                navbar-light: navbar-light
+                navbar-dark: navbar-dark
+            showSearch: 0
+            span: auto
+            default: navbar-light
+            type: dropdown
+            tab: Customisation
+        bgcolor:
+            label: 'Background color'
+            options:
+                bg-light: bg-light
+                bg-dark: bg-dark
+            emptyOption: choose
+            showSearch: 0
+            span: auto
+            default: ''
+            type: dropdown
+            tab: Customisation
+        type:
+            label: Type
+            options:
+                fixed-top: fixed-top
+                fixed-bottom: fixed-bottom
+                sticky-top: sticky-top
+            emptyOption: choose
+            showSearch: 0
+            span: auto
+            type: dropdown
+            tab: Customisation

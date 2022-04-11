@@ -1,0 +1,10 @@
+name: Navigations
+form: $/pixinside/navigation/models/navigation/fields.yaml
+modelClass: Pixinside\Navigation\Models\Navigation
+defaultRedirect: pixinside/navigation/navigations
+create:
+    redirect: 'pixinside/navigation/navigations/update/:id'
+    redirectClose: pixinside/navigation/navigations
+update:
+    redirect: pixinside/navigation/navigations
+    redirectClose: pixinside/navigation/navigations

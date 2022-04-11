@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table pixinside_navigation_'
+    - builder_table_create_pixinside_navigation_.php
+1.0.3:
+    - 'Updated table pixinside_navigation_'
+    - builder_table_update_pixinside_navigation_.php
+1.0.4:
+    - 'Updated table pixinside_navigation_'
+    - builder_table_update_pixinside_navigation__2.php
+1.0.5:
+    - 'Updated table pixinside_navigation_'
+    - builder_table_update_pixinside_navigation__3.php

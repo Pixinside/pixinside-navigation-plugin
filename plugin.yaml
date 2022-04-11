@@ -1,0 +1,11 @@
+plugin:
+    name: 'pixinside.navigation::lang.plugin.name'
+    description: 'pixinside.navigation::lang.plugin.description'
+    author: Pixinside
+    icon: oc-icon-navicon
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Navigation
+        url: pixinside/navigation/navigations
+        icon: icon-navicon

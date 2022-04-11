@@ -1,0 +1,62 @@
+{%  set menu = __SELF__.menu[0] %}
+
+
+
+
+
+<nav class="navbar  {{menu.expand}} {{menu.navbarcolor}} {{menu.bgcolor}} {{menu.type}}" id="swissliverNav">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="{{ 'home'|page }}">
+          <img src="{{menu.logo.path}}" alt="swissliver" class="img-fluid injectable">
+          </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse align-self-end" id="navbarSupportedContent">
+      <ul class="navbar-nav align-self-end mb-lg-0 ms-auto">
+          {% for nav in menu.navigation %}
+                {% set link = '#' %}
+            {% if nav.cmspage %}
+                {% set link = nav.cmspage %}
+            {% endif %}
+            {% if nav.external_link %}
+                {% set link = nav.external_link %}
+            {% endif %}
+            {% if nav.submenu %}
+                <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                       {{nav.title}}
+                     </a>
+                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        {% for subnav in nav.submenu %}
+
+                        {% set subnavlink = '#' %}
+                        {% if subnav.cmspage %}
+                            {% set subnavlink = subnav.cmspage %}
+                        {% endif %}
+                        {% if subnav.external_link %}
+                            {% set subnavlink = subnav.external_link %}
+                        {% endif %}
+
+                       <li><a class="dropdown-item {% if this.page.id == subnavlink %}active{% endif %}" href="{{subnavlink}}">{{subnav.title}}</a></li>
+
+                       {% endfor %}
+
+                       <li><hr class="dropdown-divider"></li>
+                     </ul>
+                   </li>
+            {% else %}
+              <li class="nav-item">
+                  <a class="nav-link {% if this.page.id == link %}active{% endif %}"href="{{ link |page }}">{{nav.title}}    </a>
+              </li>
+             {% endif %}
+          {% endfor %}
+
+
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
