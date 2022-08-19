@@ -81,6 +81,12 @@ tabs:
                                         action: show
                                         field: type
                                         condition: 'value[CMS Page]'
+                                anchor:
+                                    label: Ancre
+                                    span: auto
+                                    placeholder: '#'
+                                    type: text
+                                    commentAbove: 'lien sur une section de la page'
         logo:
             label: 'Logo in nav (Navbrand)'
             span: auto
@@ -91,7 +97,7 @@ tabs:
                 extension: auto
             fileTypes: 'jpg,png,svg'
             type: fileupload
-            tab: Customisation
+            tab: 'Bootstrap 5'
         expand:
             label: 'Navbar Expand'
             options:
@@ -105,7 +111,7 @@ tabs:
             default: navbar-expand-md
             type: dropdown
             commentAbove: 'Choose at what size the menu becomes a hamburger'
-            tab: Customisation
+            tab: 'Bootstrap 5'
         navbarcolor:
             label: 'Navbar color'
             options:
@@ -115,7 +121,7 @@ tabs:
             span: auto
             default: navbar-light
             type: dropdown
-            tab: Customisation
+            tab: 'Bootstrap 5'
         bgcolor:
             label: 'Background color'
             options:
@@ -126,7 +132,7 @@ tabs:
             span: auto
             default: ''
             type: dropdown
-            tab: Customisation
+            tab: 'Bootstrap 5'
         type:
             label: Type
             options:
@@ -137,4 +143,26 @@ tabs:
             showSearch: 0
             span: auto
             type: dropdown
-            tab: Customisation
+            tab: 'Bootstrap 5'
+        vertical_align:
+            label: 'Vertical Alignement'
+            options:
+                align-self-end: align-self-end
+                align-self-start: align-self-start
+            emptyOption: choose...
+            showSearch: true
+            span: auto
+            type: dropdown
+            commentAbove: 'nav-items alignement'
+            tab: 'Bootstrap 5'
+        horizontal_align:
+            label: 'Horizontal alignement'
+            options:
+                ms-auto: ms-auto
+                me-auto: me-auto
+                justify: justify
+            emptyOption: choose...
+            showSearch: true
+            span: auto
+            type: dropdown
+            tab: 'Bootstrap 5'

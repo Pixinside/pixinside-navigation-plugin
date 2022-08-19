@@ -4,16 +4,18 @@
 
 
 
-<nav class="navbar  {{menu.expand}} {{menu.navbarcolor}} {{menu.bgcolor}} {{menu.type}}" id="swissliverNav">
+<nav class="navbar  {{menu.expand}} {{menu.navbarcolor}} {{menu.bgcolor}} {{menu.type}} " id="{{menu.title}}">
   <div class="container-fluid">
-      <a class="navbar-brand" href="{{ 'home'|page }}">
-          <img src="{{menu.logo.path}}" alt="swissliver" class="img-fluid injectable">
+      {% if menu.logo.path %}
+      <a class="navbar-brand me-5" href="{{ url('/') }}">
+          <img src="{{menu.logo.path}}" alt="{{ this.theme.site_name }}" class="img-fluid injectable" width="200">
           </a>
+      {% endif %}
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse align-self-end" id="navbarSupportedContent">
-      <ul class="navbar-nav align-self-end mb-lg-0 ms-auto">
+    <div class="collapse navbar-collapse {{menu.vertical_align}}" id="navbarSupportedContent">
+      <ul class="navbar-nav align-self-end mb-lg-0 {{menu.horizontal_align}} {% if menu.horizontal_align == 'justify' %}w-100{% endif %}">
           {% for nav in menu.navigation %}
                 {% set link = '#' %}
             {% if nav.cmspage %}
@@ -23,12 +25,11 @@
                 {% set link = nav.external_link %}
             {% endif %}
             {% if nav.submenu %}
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown {% if menu.horizontal_align == 'justify' %}flex-fill {% endif %}">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                        {{nav.title}}
                      </a>
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
                         {% for subnav in nav.submenu %}
 
                         {% set subnavlink = '#' %}
@@ -39,16 +40,27 @@
                             {% set subnavlink = subnav.external_link %}
                         {% endif %}
 
-                       <li><a class="dropdown-item {% if this.page.id == subnavlink %}active{% endif %}" href="{{subnavlink}}">{{subnav.title}}</a></li>
+                       <li><a class="dropdown-item {% if this.page.id|replace({'/': '', '-': ''}) == subnavlink|replace({'/': '', '-': ''}) %}active{% endif %}" href="{{subnavlink|page}}{% if subnav.anchor %}{{subnav.anchor}}{% endif %}">{{subnav.title}} {% if subnav.external_link %} <svg xmlns="http://www.w3.org/2000/svg" width="515.279" height="515.283" viewBox="0 0 515.279 515.283" class="externalLink">
+                             <g id="external-link" transform="translate(-0.001)">
+                               <g id="Groupe_4" data-name="Groupe 4">
+                                 <g id="Groupe_3" data-name="Groupe 3">
+                                   <g id="Groupe_2" data-name="Groupe 2">
+                                     <path id="Tracé_5" data-name="Tracé 5" d="M372.149,515.283H85.881A85.881,85.881,0,0,1,0,429.4V143.134a85.881,85.881,0,0,1,85.881-85.88H200.389a28.627,28.627,0,1,1,0,57.254H85.881a28.626,28.626,0,0,0-28.626,28.626V429.4a28.626,28.626,0,0,0,28.626,28.627H372.148A28.628,28.628,0,0,0,400.774,429.4V314.9a28.628,28.628,0,0,1,57.256,0V429.4a85.883,85.883,0,0,1-85.881,85.881ZM200.389,343.521a28.626,28.626,0,0,1-20.242-48.869l237.4-237.4H314.9A28.627,28.627,0,0,1,314.9,0H486.657a28.527,28.527,0,0,1,20,8.144l0,0,.056.056.017.016.044.044.029.029.032.032.062.062.062.062c.011.01.023.023.031.032l.029.029a.624.624,0,0,1,.044.045.12.12,0,0,1,.016.016l.056.057s0,0,0,0a28.543,28.543,0,0,1,8.144,20V200.387a28.627,28.627,0,1,1-57.254,0V97.739l-237.4,237.4a28.515,28.515,0,0,1-20.237,8.383Z"/>
+                                   </g>
+                                 </g>
+                               </g>
+                             </g>
+                           </svg>
+{% endif %}</a></li>
 
                        {% endfor %}
 
-                       <li><hr class="dropdown-divider"></li>
+                       <!-- <li><hr class="dropdown-divider"></li> -->
                      </ul>
                    </li>
             {% else %}
-              <li class="nav-item">
-                  <a class="nav-link {% if this.page.id == link %}active{% endif %}"href="{{ link |page }}">{{nav.title}}    </a>
+              <li class="nav-item {% if menu.horizontal_align == 'justify' %}flex-fill{% endif %}">
+                  <a class="nav-link {% if this.page.id|replace({'/': '', '-': ''}) == link|replace({'/': '', '-': ''}) %}active{% endif %}" href="{{ link |page }}">{{nav.title}}</a>
               </li>
              {% endif %}
           {% endfor %}
@@ -60,3 +72,16 @@
     </div>
   </div>
 </nav>
+
+{% put styles %}
+    <style>
+        .externalLink {
+            width: 13px;
+            height: 13px;
+            margin-top: -5px;
+            margin-left: 3px;
+            fill: #707070;
+        }
+
+    </style>
+{% endput %}

@@ -1,5 +1,8 @@
 {
     "name": "pixinside/navigation-plugin",
-    "type": "october-plugin",
-    "description": "Plugin to manage bootstrap 5 navbars"
+    "type": "navigation-plugin",
+    "description": "Plugin to manage bootstrap 5 navbars",
+    "require": {
+        "composer/installers": "~1.0"
+    }
 }
