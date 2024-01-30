@@ -12,9 +12,6 @@ class Menu extends ComponentBase
             'description' => 'Add a menu'
         ];
     }
-    public function onStatusChange() {
-       Flash::success('youpi!');
-        }
 
     public function defineProperties(){
         return [
