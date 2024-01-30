@@ -38,13 +38,20 @@ class Menu extends ComponentBase
     }
 
     protected function loadMenu(){
-	    $menu = $this->property('menuId');
-
-        $query = MenuModel::find($menu)->get();
-
-
-        return $query;
+        $menuId = $this->property('menuId');
+    
+        // Vérifiez d'abord si un menu avec l'ID donné existe
+        $menu = MenuModel::find($menuId);
+    
+        // Si le menu existe, retournez-le, sinon retournez null ou un tableau vide
+        if ($menu) {
+            return $menu;
+        } else {
+            // Vous pouvez retourner null ou un tableau vide, selon la logique de votre application
+            return null; // ou return [];
+        }
     }
+    
 
     public $menu;
 
