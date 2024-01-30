@@ -4,6 +4,6 @@
     "description": "Plugin to manage bootstrap 5 navbars",
     "require": {
         "composer/installers": "~1.0",
-        "rainlab/translate-plugin": "^1.0"
+        "rainlab/translate-plugin": "^2.0"
     }
 }
